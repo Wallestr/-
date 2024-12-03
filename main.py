@@ -4,13 +4,12 @@ import random
 from PyQt6.QtWidgets import QApplication, QWidget, QLabel
 from PyQt6.QtGui import QPainter, QPen, QColor, QPolygonF
 from PyQt6.QtCore import Qt, QPointF, QRectF, QSizeF
-from PyQt6 import uic 
+from UI_ui import Ui_Form
 
-
-class MyWidget(QWidget):
+class MyWidget(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self) 
+        self.setupUi(self)
         self.pushButton.clicked.connect(self.run)
 
     def run(self):
