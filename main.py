@@ -1,36 +1,21 @@
-import sys
-import random
-
-from PyQt6.QtWidgets import QApplication, QWidget, QLabel
-from PyQt6.QtGui import QPainter, QPen, QColor, QPolygonF
-from PyQt6.QtCore import Qt, QPointF, QRectF, QSizeF
-from UI_ui import Ui_Form
-
-class MyWidget(QWidget, Ui_Form):
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
-        self.pushButton.clicked.connect(self.run)
-
-    def run(self):
-        self.update()
-
-    def paintEvent(self, event):
-        painter = QPainter(self)
-        painter.setBrush(
-            QColor(
-                random.randint(0, 255),
-                random.randint(0, 255),
-                random.randint(0, 255),
-                )
-            )
-        hh = random.randint(20, 100)
-        painter.drawEllipse(QPointF(self.width() / 2, self.height() / 2), hh, hh)
-
-
+import pygame
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = MyWidget()
-    ex.show()
-    sys.exit(app.exec())
+    # инициализация Pygame:
+    pygame.init()
+    # размеры окна: 
+    size = width, height = 800, 600
+    # screen — холст, на котором нужно рисовать:
+    screen = pygame.display.set_mode(size)
+    # формирование кадра:
+    # команды рисования на холсте
+    # ...
+    # ...
+    # смена (отрисовка) кадра:
+    pygame.display.flip()
+    # ожидание закрытия окна:
+    while pygame.event.wait().type != pygame.QUIT:
+        pass
+    # завершение работы:
+    pygame.quit()
+    
